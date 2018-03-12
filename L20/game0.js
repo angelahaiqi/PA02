@@ -114,7 +114,7 @@ The user moves a cube around the board trying to knock balls into a cone
 		
 			scene.add(npc);
 		
-		
+			var distance = Math.sqrt ((avatar.position.x - npc.position.x)^2 + (avatar.position.z - npc.position.z)^2);
 			//playGameMusic();
 
 	}

@@ -103,11 +103,11 @@ The user moves a cube around the board trying to knock balls into a cone
 			scene.add(cone);
 
 			npc = createTorusKnot(0xff0000);
-			npc.position.set(40, 8, 30);
+			npc.position.set(40, 0, 30);
 			npc.addEventListener('collision',
 				function(other_object){
         				if (other_object==avatar){
-						consloe.log("ball "+i+" hit the npc");
+						consloe.log("avator "+i+" hit the npc");
           					gameState.score -= 1; // subtract one from the score
         			}
       			})

@@ -143,7 +143,7 @@ The user moves a cube around the board trying to knock balls into a cone
 					soundEffect('bad.wav');
 					if (gameState.health == 0){
 						gameState.scene='youlose';
-						soundEffect('bad.wav');
+						soundEffect('youlose.wav');
 					}
 					this.__dirtyPosition = true;
       		this.position.set(randN(80)-50,5,randN(80)-50);

@@ -480,8 +480,8 @@ The user moves a cube around the board trying to knock balls into a cone
 			case "ArrowRight": avatarCam.translateY(-1);break;
 			case "ArrowUp": avatarCam.translateZ(-1);break;
 			case "ArrowDown": avatarCam.translateZ(1);break;
-			case "q": avatarCam.rotateY(-1) = true; break;
-			case "e": avatarCam.rotateY(1) = true; break;
+			case "q": avatarCam.rotateY(1) = true; break;
+			case "e": avatarCam.rotateY(-1) = true; break;
 		}
 
 	}

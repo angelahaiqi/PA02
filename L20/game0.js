@@ -294,7 +294,7 @@ The user moves a cube around the board trying to knock balls into a cone
 		return mesh;
 	}*/
 	function createTorusKnot(color) {
-		var geometry = new THREE.TorusKnotGeometry(1.25, .375, 12.5, 2 );
+		var geometry = new THREE.TorusKnotGeometry(2.5, .75, 25, 4 );
 		var material = new THREE.MeshLambertMaterial( { color: color} );
 		var pmaterial = new Physijs.createMaterial(material,0.9,0.5);
 		var mesh = new Physijs.BoxMesh(geometry, pmaterial);
@@ -434,7 +434,7 @@ The user moves a cube around the board trying to knock balls into a cone
 			avatar.__dirtyPosition = true;
 			avatar.position.set(0,20,0);
 			avatarCam.lookAt(0,4,10);
-			npc.position.set(30,12,-30);
+			npc.position.set(30,5,-30);
 			gameState.scene = 'main';
 			startBall = gameState.score;
 			addBalls();
@@ -445,7 +445,7 @@ The user moves a cube around the board trying to knock balls into a cone
 			avatar.__dirtyPosition = true;
 			avatar.position.set(0,20,0);
 			avatarCam.lookAt(0,4,10);
-			npc.position.set(30,12,-30);
+			npc.position.set(30,5,-30);
 			gameState.scene = 'main';
 			startBall = gameState.score;
 			addBalls();
@@ -480,8 +480,8 @@ The user moves a cube around the board trying to knock balls into a cone
 			case "ArrowRight": avatarCam.translateY(-1);break;
 			case "ArrowUp": avatarCam.translateZ(-1);break;
 			case "ArrowDown": avatarCam.translateZ(1);break;
-			case "q": avatarCam.rotateY(1) = true; break;
-			case "e": avatarCam.rotateY(-1) = true; break;
+			case "q": avatarCam.rotateY(0.5) = true; break;
+			case "e": avatarCam.rotateY(-0.5) = true; break;
 		}
 
 	}
@@ -542,7 +542,7 @@ The user moves a cube around the board trying to knock balls into a cone
 			avatar.__dirtyPosition = true;
 			avatar.position.set(0,20,0);
 			avatarCam.lookAt(0,4,10);
-			npc.position.set(30,12,-30);
+			npc.position.set(30,5,-30);
 			gameState.scene = 'main';
 			startBall = gameState.score;
 			addBalls();

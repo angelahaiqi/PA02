@@ -483,6 +483,6 @@ The user moves a cube around the board trying to knock balls into a cone
 	  var info = document.getElementById("info");
 		info.innerHTML='<div style="font-size:24pt">Score: ' + gameState.score 
 		+ " Health: "+gameState.health
-		+ </div>';
+		+ '</div>';
 
 	}

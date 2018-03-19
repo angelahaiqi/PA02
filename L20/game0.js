@@ -334,7 +334,7 @@ The user moves a cube around the board trying to knock balls into a cone
 		var geometry = new THREE.TorusKnotGeometry(5, 3, 10, 15);
 		var material = new THREE.MeshLambertMaterial( { color: color} );
 		var pmaterial = new Physijs.createMaterial(material,0.9,0.5);
-		var mesh = new Physijs.BoxMesh(geometry, pmaterial, 0);
+		var mesh = new Physijs.BoxMesh(geometry, pmaterial);
 		mesh.castShadow = true;
 		mesh.lookAt(avatar.position);
 		return mesh;
@@ -481,6 +481,8 @@ The user moves a cube around the board trying to knock balls into a cone
 
 		//draw heads up display ..
 	  var info = document.getElementById("info");
-		info.innerHTML='<div style="font-size:24pt">Score: ' + gameState.score + '</div>';
+		info.innerHTML='<div style="font-size:24pt">Score: ' + gameState.score 
+		+ " Health: "+gameState.health'
+		+ </div>';
 
 	}

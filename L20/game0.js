@@ -103,18 +103,17 @@ The user moves a cube around the board trying to knock balls into a cone
 			scene.add(cone);
 
 			npc = createTorusKnot(0xff0000);
-			npc.position.set(40, 20, 30);
-			scene.add(npc);
-
+			npc.position.set(40, 0, 30);
 			npc.addEventListener('collision',
-				function(other_object,relative_velocity, relative_rotation, contact_normal ){
-					if (other_object==avatar){
-						console.log("avator hit the npc");
-          					gameState.health -= 1; // subtract one from the health
-						this.position.set(randN(20)+15,30,randN(20)+15);
-						this.__dirtyPosition = true;
+				function(other_object){
+        				if (other_object==avatar){
+						consloe.log("avator "+i+" hit the npc");
+          					gameState.score -= 1; // subtract one from the score
         			}
       			})
+		
+			scene.add(npc);
+		
 			
 			//playGameMusic();
 

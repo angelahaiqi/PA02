@@ -9,7 +9,7 @@ The user moves a cube around the board trying to knock balls into a cone
 	// First we declare the variables that hold the objects we need
 	// in the animation code
 	var scene, renderer;  // all threejs programs need these
-	var camera, avatarCam, edgeCam;  // we have two cameras in the main scene
+	var camera, avatarCam, edgeCam;  // we have three cameras in the main scene
 	var avatar;
 	// here are some mesh objects ...
 

@@ -507,7 +507,7 @@ The user moves a cube around the board trying to knock balls into a cone
 		npc.__dirtyPosition = true;
 		var distance = npc.position.distanceTo( avatar.position );
 		if (distance <= 50){
-		npc.setLinearVelocity(npc.getWorldDirection().multiplyScalar(1.5));
+		npc.setLinearVelocity(npc.getWorldDirection().multiplyScalar(3));
 	}
 }
 

@@ -103,7 +103,7 @@ The user moves a cube around the board trying to knock balls into a cone
 			scene.add(cone);
 
 			npc = createTorusKnot(0xff0000);
-			npc.position.set(40, 20, 30);
+			npc.position.set(40, 10, 30);
 			scene.add(npc);
 
 			npc.addEventListener('collision',
@@ -129,7 +129,7 @@ The user moves a cube around the board trying to knock balls into a cone
 
 
 	function addBalls(){
-		var numBalls = 2
+		var numBalls = 20;
 
 
 		for(i=0;i<numBalls;i++){
@@ -331,7 +331,7 @@ The user moves a cube around the board trying to knock balls into a cone
 	}
 
 	function createTorusKnot(color) {
-		var geometry = new THREE.TorusKnotGeometry(5, 3, 10, 15);
+		var geometry = new THREE.TorusKnotGeometry(2, 3, 10, 15);
 		var material = new THREE.MeshLambertMaterial( { color: color} );
 		var pmaterial = new Physijs.createMaterial(material,0.9,0.5);
 		var mesh = new Physijs.BoxMesh(geometry, pmaterial);

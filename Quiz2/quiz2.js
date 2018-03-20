@@ -88,11 +88,13 @@ The user moves a cube around the board trying to knock balls into a cone
 
 			// create the avatar
 			avatarCam = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 0.1, 1000 );
-			avatar = createAvatar();
-			avatar.translateY(20);
+
+			initSuzanne();
+			//avatar = createAvatar();
+			//avatar.translateY(20);
 			avatarCam.translateY(-4);
 			avatarCam.translateZ(3);
-			scene.add(avatar);
+			//scene.add(avatar);
 			gameState.camera = avatarCam;
 
       edgeCam = new THREE.PerspectiveCamera( 90, window.innerWidth / window.innerHeight, 0.1, 1000 );
@@ -290,6 +292,48 @@ The user moves a cube around the board trying to knock balls into a cone
 		// we need to rotate the mesh 90 degrees to make it horizontal not vertical
 
 
+	}
+
+	var suzanne;
+
+	function initSuzanne() {
+		// Adds a Suzanne object exported as an 'obj' file from Blender.
+		// Note- this is *heavily* adapted from the code from in class.
+		var loader = new THREE.OBJLoader();
+		loader.load("../models/suzanne_for_pa02.obj",
+				function ( obj ) {
+					console.log("loading suzanne.obj file");
+					//console.dir( obj );
+					//console.add( obj );
+					//obj.castShadow = true;
+					suzanne = obj;
+
+					var geometry = suzanne.children[0].geometry;
+					var material = suzanne.children[0].material;
+					suzanne = new Physijs.BoxMesh(geometry, material);
+
+					avatarCam = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 0.1, 1000 );
+					gameState.camera = avatarCam;
+
+					avatarCam.position.set(0,6,-15);
+					avatarCam.lookAt(0,4,10);
+					suzanne.add(avatarCam);
+					suzanne.position.set(-40,20,-40);
+					suzanne.castShadow = true;
+					scene.add( suzanne  );
+					avatar=suzanne;
+
+					console.log("suzanne has been added");
+				},
+
+				function(xhr) {
+					console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );
+				},
+
+				function(err) {
+					console.log("error in loading: "+err);
+				}
+			)
 	}
 
 	function createAvatar(){

@@ -152,18 +152,7 @@ The user moves a cube around the board trying to knock balls into a cone
 					}
 
       })
-			npc2 = createTorusKnot2(0x0000ff,1,2,4);
 		
-			npc2.position.set(--30,12,-30);
-			scene.add(npc2);
-      npc2.addEventListener('collision',function(other_object){
-      	if (other_object==avatar){
-					gameState.health ++;
-					soundEffect('good.wav');
-					this.__dirtyPosition = true;
-      		this.position.set(randN(80)-50,5,randN(80)-50);
-					}
-      })
 			//scene.add(npc);
 
 
@@ -313,15 +302,6 @@ The user moves a cube around the board trying to knock balls into a cone
 		var pmaterial = new Physijs.createMaterial(material,0.9,0.5);
 		var mesh = new Physijs.BoxMesh(geometry, pmaterial);
 		mesh.castShadow = true;
-		return mesh;
-	}
-	function createTorusKnot2(color) {
-		var geometry = new THREE.TorusKnotGeometry(1.25, .375, 12.5, 2 );
-		var material = new THREE.MeshLambertMaterial( { color: color} );
-		var pmaterial = new Physijs.createMaterial(material,0.9,0.5);
-		var mesh = new Physijs.BoxMesh(geometry, pmaterial);
-		mesh.castShadow = true;
-		//mesh.lookAt(avatar.position);
 		return mesh;
 	}
 

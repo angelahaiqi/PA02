@@ -163,6 +163,10 @@ The user collects 20 balls to win.
 					}
 
 			})
+			
+			var wall = createWall(0xffaa00,50,3,1);
+      			wall.position.set(10,0,10);
+      			scene.add(wall);
 
 			//playGameMusic();
 
@@ -318,6 +322,13 @@ The user collects 20 balls to win.
 		mesh.castShadow = true;
 		return mesh;
 	}
+
+	  function createWall(color,w,h,d){
+    		var geometry = new THREE.BoxGeometry( w, h, d);
+    		var material = new THREE.MeshLambertMaterial( { color: color} );
+    		mesh = new Physijs.BoxMesh( geometry, material, 0 );
+    		mesh.castShadow = true;
+    		return mesh;
 
 	function createTorusKnot(color) {
 		var geometry = new THREE.TorusKnotGeometry(1.25, .375, 12.5, 2 );

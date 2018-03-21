@@ -9,6 +9,7 @@ The user moves a cube around the board trying to knock balls into a cone
 	// First we declare the variables that hold the objects we need
 	// in the animation code
 	var scene, renderer;  // all threejs programs need these
+	var textMesh;
 	var camera, avatarCam, edgeCam;  // we have three cameras in the main scene
 	var avatar; var suzanne; var monkey;
 	// here are some mesh objects ...
@@ -84,6 +85,7 @@ The user moves a cube around the board trying to knock balls into a cone
       initPhysijs();
 			scene = initScene();
 			createEndScene();
+			initTextMesh();
 			createStartScene();
 			createLoseScene();
 			initRenderer();
@@ -162,18 +164,49 @@ The user moves a cube around the board trying to knock balls into a cone
 
 			})
 
-
-			//scene.add(npc);
-
-			//console.dir(npc);
-			playGameMusic();
+			//playGameMusic();
 
 	}
 
 	function randN(n){
 		return Math.random()*n;
 	}
+	function initTextMesh(){
+		var loader = new THREE.FontLoader();
+		loader.load( '/fonts/helvetiker_regular.typeface.json',
+								 createTextMesh);
+		console.log("preparing to load the font");
 
+	}
+	function createTextMesh(font) {
+		var textGeometry =
+			new THREE.TextGeometry( 'Collect 20 Balls to win!',
+					{
+						font: font,
+						size: 5,
+						height: 0.2,
+						curveSegments: 12,
+						bevelEnabled: true,
+						bevelThickness: 0.01,
+						bevelSize: 0.08,
+						bevelSegments: 5
+					}
+				);
+
+		var textMaterial =
+			new THREE.MeshLambertMaterial( { color: 0xaaaaff } );
+
+		textMesh =
+			new THREE.Mesh( textGeometry, textMaterial );
+
+		// center the text mesh
+		textMesh.translateX(-35);
+		textMesh.translateY(10);
+
+		scene.add(textMesh);
+
+		console.log("added textMesh to scene");
+	}
 
 	function addBalls(){
 		var numBalls = startBall;
@@ -453,6 +486,8 @@ The user moves a cube around the board trying to knock balls into a cone
 			return;
 		}
 		if (gameState.scene == 'youwon' && event.key=='r') {
+			avatar.__dirtyRotation = true;
+			avatar.rotation.set(0,0,0);
 			avatar.__dirtyPosition = true;
 			avatar.position.set(-40,20,-40);
 			avatarCam.lookAt(0,4,10);
@@ -466,6 +501,8 @@ The user moves a cube around the board trying to knock balls into a cone
 			gameState.health = 10;
 			return;
 		} else if (gameState.scene == 'youlose' && event.key=='r') {
+			avatar.__dirtyRotation = true;
+			avatar.rotation.set(0,0,0);
 			avatar.__dirtyPosition = true;
 			avatar.position.set(-40,20,-40);
 			avatarCam.lookAt(0,4,10);
@@ -585,7 +622,7 @@ The user moves a cube around the board trying to knock balls into a cone
 		monkey.__dirtyPosition = true;
 		var distance = monkey.position.distanceTo( avatar.position );
 		if (distance <= 100){
-			monkey.setLinearVelocity(monkey.getWorldDirection().multiplyScalar(1));
+			monkey.setLinearVelocity(monkey.getWorldDirection().multiplyScalar(4));
 			monkey.material.emissive.r = Math.abs(Math.sin(t));
 			monkey.material.color.b=0
 		}
@@ -595,6 +632,12 @@ The user moves a cube around the board trying to knock balls into a cone
 	function animate() {
 
 		requestAnimationFrame( animate );
+
+		if (textMesh){
+			textMesh.translateX(35);
+			textMesh.rotateY(-0.01);
+			textMesh.translateX(-35);
+		}
 
 		switch(gameState.scene) {
 

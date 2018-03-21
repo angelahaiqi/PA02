@@ -1,7 +1,7 @@
 /*
-Game 0
+Final Game
 This is a ThreeJS program which implements a simple game
-The user moves a cube around the board trying to knock balls into a cone
+The user collects 20 balls to win.
 
 */
 

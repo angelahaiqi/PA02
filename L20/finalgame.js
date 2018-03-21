@@ -524,13 +524,13 @@ The user collects 20 balls to win.
 			case "s": controls.bwd = true; break;
 			case "a": controls.left = true; break;
 			case "d": controls.right = true; break;
-			case "r": controls.up = true; break;
-			case "f": controls.down = true; break;
+			case "z": controls.up = true; break;
+			case "x": controls.down = true; break;
 			case "m": controls.speed = 30; break;
       case " ": controls.fly = true;
           console.log("space!!");
           break;
-      case "h": controls.reset = true; break;
+      case "r": controls.reset = true; break;
 
 
 			// switch cameras
@@ -557,11 +557,11 @@ The user collects 20 balls to win.
 			case "s": controls.bwd   = false; break;
 			case "a": controls.left  = false; break;
 			case "d": controls.right = false; break;
-			case "r": controls.up    = false; break;
-			case "f": controls.down  = false; break;
+			case "z": controls.up    = false; break;
+			case "x": controls.down  = false; break;
 			case "m": controls.speed = 10; break;
       case " ": controls.fly = false; break;
-      case "h": controls.reset = false; break;
+      case "r": controls.reset = false; break;
 		}
 	}
 
